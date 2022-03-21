@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Search from "./Search";
 import "./Weather.css";
 
 export default function Weather(props) {
@@ -30,19 +31,7 @@ export default function Weather(props) {
       <form className="mb-3">
         <div className="row">
           <div className="col-9">
-            <input
-              type="search"
-              placeholder="Enter a city..."
-              className="form-control"
-              autoComplete="off"
-            />
-          </div>
-          <div className="col-3">
-            <input
-              type="submit"
-              value="Search"
-              className="btn btn-primary w-100"
-            />
+            <Search />
           </div>
         </div>
       </form>
@@ -82,6 +71,16 @@ export default function Weather(props) {
           </ul>
         </div>
       </div>
+      <p>
+        <a
+          href="https://github.com/guiomarandrino/weather-react"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Open-source code
+        </a>{" "}
+        by Guiomar Andrino
+      </p>
     </div>
   );
 }
