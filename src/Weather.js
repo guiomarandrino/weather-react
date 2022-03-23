@@ -1,86 +1,77 @@
 import React, { useState } from "react";
-import Search from "./Search";
 import "./Weather.css";
+import axios from "axios";
 
-export default function Weather(props) {
-  const [temperature, setTemperature] = useState(props.temperature);
+export default function Weather() {
+  const [weatherData, setWeatherData] = useState({ ready: false });
 
-  let weatherData = {
-    city: "New York",
-    temperature: 19,
-    date: "Tuesday 10:00",
-    description: "Cloudy",
-    imgUrl: "https://ssl.gstatic.com/onebox/weather/64/sunny.png",
-    humidity: 80,
-    wind: 10,
-  };
-
-  function showFahrenheit(event) {
-    event.preventDefault();
-    let fahrenheitTemperature = Math.round((props.temperature * 9) / 5 + 32);
-    setTemperature(fahrenheitTemperature);
+  function handleResponse(response) {
+    console.log(response.data);
+    setWeatherData({
+      ready: true,
+      temperature: response.data.main.temp,
+      city: response.data.name,
+      wind: response.data.wind.speed,
+      humidity: response.data.main.humidity,
+      description: response.data.weather[0].main,
+      iconUrl: "https://ssl.gstatic.com/onebox/weather/64/rain_heavy.png",
+      date: "Monday 19:00",
+    });
   }
 
-  function showCelsius(event) {
-    event.preventDefault();
-    setTemperature(props.temperature);
-  }
-
-  return (
-    <div className="Weather">
-      <form className="mb-3">
-        <div className="row">
-          <div className="col-9">
-            <Search />
-          </div>
-        </div>
-      </form>
-      <div className="overview">
-        <h1>{weatherData.city}</h1>
-        <ul>
-          <li>Last updated: {weatherData.date}</li>
-          <li>{weatherData.description}</li>
-        </ul>
-      </div>
-      <div className="row">
-        <div className="col-6">
-          <div className="clearfix weather-temperature">
-            <img
-              src={weatherData.imgUrl}
-              alt={weatherData.description}
-              className="float-left"
-            />
-            <div className="float-left">
-              <strong>{temperature}</strong>
-              <span className="units">
-                <a href="/" onClick={showCelsius}>
-                  °C
-                </a>{" "}
-                |{" "}
-                <a href="/" onClick={showFahrenheit}>
-                  °F
-                </a>
-              </span>
+  if (weatherData.ready) {
+    return (
+      <div className="Weather">
+        <form>
+          <div className="row">
+            <div className="col-9">
+              <input
+                type="search"
+                placeholder="Enter a city..."
+                className="form-control"
+                autoFocus="on"
+              />
+            </div>
+            <div className="col-3">
+              <input type="submit" value="Search" className="btn w-100" />
             </div>
           </div>
+        </form>
+        <div className="row mt-3 mb-3">
+          <div className="col-6">
+            <h1 className="city text-center">{weatherData.city}</h1>
+          </div>
+          <div className="col-6">
+            <ul className="date">
+              <li>{weatherData.date}</li>
+              <li>{weatherData.description}</li>
+            </ul>
+          </div>
         </div>
-        <div className="col-6">
-          <ul>
-            <li>Humidity: {weatherData.humidity}%</li>
-            <li>Wind: {weatherData.wind} km/h</li>
-          </ul>
+        <div className="row">
+          <div className="col-6">
+            <ul className="info">
+              <li>Precipitation: 100%</li>
+              <li>Humidity: {weatherData.humidity}%</li>
+              <li>Wind: {Math.round(weatherData.wind)} km/h</li>
+            </ul>
+          </div>
+          <div className="col-6 text-center">
+            <img src={weatherData.iconUrl} alt={weatherData.description} />
+            <span className="temperature">
+              {Math.round(weatherData.temperature)}
+            </span>
+            <span className="unit">ºC</span>
+          </div>
         </div>
       </div>
-      <p>
-        <a
-          href="https://github.com/guiomarandrino/weather-react"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Open-source code
-        </a>{" "}
-        by Guiomar Andrino
-      </p>
-    </div>
-  );
+    );
+  } else {
+    const apiKey = "d0b1e479fc5064851c4adfb88cebfb69";
+    let city = "Madrid";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
+
+    return "Loading";
+  }
 }

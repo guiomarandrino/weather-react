@@ -1,60 +1,46 @@
 :root {
-  --dark-orange: #ff1700;
-  --dark-pink: #f21170;
+  --sage-green: #aac3a3;
+  --lilac: #ecc6cf;
+  --brown: #9a8c82;
 }
 
 .Weather {
   padding: 20px;
-  border: 3px var(--dark-pink) solid;
-  background: #ffd19a;
+  border: 3px var(--sage-green) solid;
+  background: #fefded;
   border-radius: 10px;
-}
-
-.Weather .overview {
-  margin-bottom: 20px;
 }
 
 .form-control {
-  border-radius: 10px;
-  border: var(--dark-pink) solid;
+  border: 3px var(--brown) solid !important;
 }
 
 .btn {
-  background-color: var(--dark-orange) !important;
-  border: var(--dark-orange) solid;
+  background-color: var(--lilac) !important;
+  color: white !important;
+}
+
+.Weather h1 {
+  color: var(--brown);
+  font-size: 40px;
+  padding: 15px 0px;
+}
+
+.Weather li {
+  list-style: none;
+}
+
+.Weather .temperature {
+  font-size: 60px;
+  font-weight: bold;
+}
+
+.Weather .date {
+  padding: 15px;
+}
+
+.Weather .info {
+  background-color: var(--lilac);
+  padding: 10px;
   border-radius: 10px;
-}
-
-.btn:hover {
-  transition: all 200ms ease;
-  cursor: pointer;
-  border: var(--dark-orange) solid;
-}
-
-.Weather .weather-temperature img {
-  margin-right: 5px;
-  height: 64px;
-  width: 64px;
-}
-
-.Weather .weather-temperature strong {
-  color: black;
-  font-size: 64px;
-  line-height: 1;
-  font-weight: 400;
-}
-
-.Weather .weather-temperature .units {
-  position: relative;
-  font-size: 16px;
-  top: -34px;
-}
-
-.Weather .weather-temperature .active {
-  color: black;
-  cursor: default;
-}
-
-.Weather .weather-temperature .active:hover {
-  text-decoration: none;
 }
