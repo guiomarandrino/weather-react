@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <div className="container">
-        <Weather />
+        <Weather defaultCity="Madrid" />
         <footer>
           <a
             href="https://github.com/guiomarandrino/weather-react"
