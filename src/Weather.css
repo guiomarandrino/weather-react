@@ -49,3 +49,10 @@
 .Weather canvas {
   padding: 10px 10px 10px 30px;
 }
+
+.weatherTemperature .unit {
+  font-size: 13px;
+}
+.weatherTemperature .unit a {
+  text-decoration: none;
+}
