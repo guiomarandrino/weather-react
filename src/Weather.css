@@ -7,7 +7,7 @@
 .Weather {
   padding: 20px;
   border: 3px var(--sage-green) solid;
-  background: #fefded;
+  background: #fefbf3;
   border-radius: 10px;
 }
 
@@ -33,6 +33,7 @@
 .Weather .temperature {
   font-size: 60px;
   font-weight: bold;
+  padding: 0px 0px 30px 15px;
 }
 
 .Weather .date {
