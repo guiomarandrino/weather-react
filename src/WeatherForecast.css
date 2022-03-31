@@ -1,0 +1,17 @@
+:root {
+  --sage-green: #aac3a3;
+  --lilac: #ecc6cf;
+  --brown: #9a8c82;
+}
+
+.WeatherForecast {
+  text-align: center;
+}
+
+.WeatherForecast .col {
+  border: solid 3px var(--lilac);
+}
+
+.WeatherForecast-temp {
+  color: var(--brown);
+}
