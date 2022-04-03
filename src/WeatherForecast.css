@@ -10,6 +10,8 @@
 
 .WeatherForecast .col {
   border: solid 3px var(--lilac);
+  border-radius: 10px;
+  margin: 20px 5px 10px 5px;
 }
 
 .WeatherForecast-temp {
