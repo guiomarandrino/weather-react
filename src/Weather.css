@@ -33,7 +33,7 @@
 .Weather .temperature {
   font-size: 60px;
   font-weight: bold;
-  padding: 0px 15px 40px 15px;
+  padding: 0px 0px 40px 0px;
 }
 
 .Weather .date {
@@ -48,6 +48,7 @@
 
 .Weather canvas {
   padding: 10px 10px 10px 20px;
+  text-align: center !important;
 }
 
 .weatherTemperature .unit {
